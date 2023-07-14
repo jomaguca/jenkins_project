@@ -1,24 +1,11 @@
-pipeline { 
-    agent any 
-    options {
-        skipStagesAfterUnstable()
-    }
-    stages {
-        stage('Build') { 
-            steps { 
-                sh 'make' 
-            }
-        }
-        stage('Test'){
-            steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'make publish'
-            }
-        }
-    }
+pipeline{
+	agent any
+	stages{
+		stage('Hello'){
+			steps {
+				sh 'echo  hello world'
+				echo "Build number is ${currentBuild.number}"
+			}
+		}
+	}
 }
